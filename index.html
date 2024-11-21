@@ -1,0 +1,100 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Catálogo de Productos</title>
+    <link rel="stylesheet" href="styles.css">
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600&display=swap" rel="stylesheet">
+</head>
+<body>
+    <header>
+        <div class="header-content">
+            <h1>Catálogo de Productos</h1>
+            <div class="search-container">
+                <input type="text" id="searchInput" placeholder="Buscar productos...">
+            </div>
+            <div class="user-controls">
+                <select id="userRole">
+                    <option value="user">Usuario</option>
+                    <option value="admin">Administrador</option>
+                </select>
+                <button id="cartButton" class="cart-button">🛒 <span id="cartCount">0</span></button>
+            </div>
+        </div>
+    </header>
+
+    <div class="container">
+        <div class="sort-options">
+            <label for="sortBy">Ordenar por:</label>
+            <select id="sortBy">
+                <option value="relevance">Relevancia</option>
+                <option value="dateDesc">Fecha (Más reciente)</option>
+                <option value="dateAsc">Fecha (Más antiguo)</option>
+                <option value="ratingDesc">Calificación (Mayor)</option>
+                <option value="ratingAsc">Calificación (Menor)</option>
+            </select>
+        </div>
+        <section id="productos" class="products-grid">
+            <!-- Los productos se generarán dinámicamente aquí -->
+        </section>
+        <div class="pagination">
+            <button id="prevPage" class="page-btn">&laquo; Anterior</button>
+            <span id="currentPage">Página 1 de 1</span>
+            <button id="nextPage" class="page-btn">Siguiente &raquo;</button>
+        </div>
+    </div>
+
+    <div class="floating-button" id="floatingAddBtn">+</div>
+
+    <div class="modal" id="productModal">
+        <div class="modal-content">
+            <button class="close-modal" id="closeModal">&times;</button>
+            <h2 id="modalTitle">Agregar Nuevo Producto</h2>
+            <form id="productForm">
+                <input type="hidden" id="productId">
+                <div class="form-group">
+                    <label for="nombre">Nombre del Producto</label>
+                    <input type="text" id="nombre" required>
+                </div>
+                <div class="form-group">
+                    <label for="precio">Precio</label>
+                    <input type="number" id="precio" step="0.01" required>
+                </div>
+                <div class="form-group">
+                    <label for="imagen">URL de la Imagen</label>
+                    <input type="url" id="imagen" required>
+                </div>
+                <div class="form-group">
+                    <label for="descripcion">Descripción</label>
+                    <textarea id="descripcion" required></textarea>
+                </div>
+                <div class="form-group">
+                    <label for="calificacion">Calificación</label>
+                    <input type="number" id="calificacion" min="1" max="5" step="0.1" required>
+                </div>
+                <button type="submit" id="submitBtn">Agregar Producto</button>
+            </form>
+        </div>
+    </div>
+
+    <div class="modal" id="cartModal">
+        <div class="modal-content cart-modal">
+            <button class="close-modal" id="closeCartModal">&times;</button>
+            <h2>Carrito de Compras</h2>
+            <div id="cartItems" class="cart-items">
+                <!-- Los items del carrito se generarán dinámicamente aquí -->
+            </div>
+            <div class="cart-summary">
+                <p>Total: <span id="cartTotal">$0.00</span></p>
+                <button id="checkoutBtn" class="checkout-btn">Proceder al pago</button>
+            </div>
+        </div>
+    </div>
+    <footer>
+        <p>© 2024 Catálogo de Productos. Todos los derechos reservados.</p>
+    </footer>
+
+    <script src="script.js"></script>
+</body>
+</html>
